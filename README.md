@@ -4,6 +4,7 @@
 
 # Cara penggunaan
 Termux - Android (recommended version 0.117-Last)
+https://apkcombo.com/id/termux/com.termux/old-versions/0.119.1/
 
 1. pkg upgrade && update
 2. pkg install git
