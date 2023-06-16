@@ -54,48 +54,10 @@ function uniqueId(){
 }
 
 function randDomain(){
-	$arraymail = array('yahoo.com','yahoo.co.id','gmail.com','outlook.com','yahoo.co.id','icloud.com','hotmail.com'); #ori
-	// $arraymail = array('bygnpa.my.id');
+	$arraymail = array('yahoo.com','gmail.com','outlook.com','yahoo.co.id','icloud.com','hotmail.com');
 	$datas = array_rand($arraymail, true);
 	return $arraymail[$datas];
 }
-
-// function randomUser($ua){
-// #ORI
-// 	$url = "http://ninjaname.horseridersupply.com/indonesian_name.php";
-// 	$param = "number_generate=10&gender_type=female&submit=Generate";
-// 	$headers = array();
-// 	$headers[] = 'Content-Length: '.strlen($param);
-// 	$headers[] = 'User-Agent: '.$ua;
-// 	$headers[] = 'Content-Type: application/x-www-form-urlencoded';
-// 	$run = curl($param,$headers,$url,$customreq = null,$post = true,$curlheader = false,$method = null);
-// 	$data = explode('&bull;',$run)[1];
-// 	return explode('<br/>',$data)[0];
-// }
-
-// function randomUser($ua) {
-//     $url = "http://ninjaname.horseridersupply.com/indonesian_name.php";
-//     #$param = "number_generate=10&gender_type=female&submit=Generate";
-//     #$param = "number_generate=5&gender_type=female&country=javanese&submit=Generate";
-// 	$param = "number_generate=50&gender_type=female&country=javanese,sundanese,batak&submit=Generate";
-//     $headers = array();
-//     $headers[] = 'Content-Length: ' . strlen($param);
-//     $headers[] = 'User-Agent: ' . $ua;
-//     $headers[] = 'Content-Type: application/x-www-form-urlencoded';
-//     $run = curl($param, $headers, $url, $customreq = null, $post = true, $curlheader = false, $method = null);
-//     $data = explode('&bull;', $run)[1];
-//     $names = explode('<br/>', $data);
-
-//     $filteredNames = array();
-//     foreach ($names as $name) {
-//         // Hanya memilih nama dengan tidak lebih dari 15 karakter
-//         if (strlen($name) <= 16) {
-//             $filteredNames[] = $name;
-//         }
-//     }
-
-//     return $filteredNames[0];
-// }
 
 function randomUser($ua) {
     $url = "http://ninjaname.horseridersupply.com/indonesian_name.php";
@@ -114,15 +76,13 @@ function randomUser($ua) {
 
         $filteredNames = array();
         foreach ($names as $name) {
-            // Hanya memilih nama dengan tidak lebih dari 15 karakter
             if (strlen($name) <= 15) {
                 $filteredNames[] = $name;
             }
         }
 
         if (empty($filteredNames)) {
-            // Jika tidak ada nama yang memenuhi kriteria, ulangi proses
-            sleep(1); // Menunggu 1 detik sebelum mengulangi permintaan
+            sleep(1);
         }
     } while (empty($filteredNames));
 
@@ -173,8 +133,7 @@ function signup($email,$pass,$ttl,$username,$iid,$ua,$gender,$apikey){
 }
 
 function generateCsrf($ua){
-	$url = "https://accounts.spotify.com/en/login"; #ori
-	// $url = "https://accounts.spotify.com/tr/login";
+	$url = "https://accounts.spotify.com/en/login";
 	$method = "GET";
 	$headers = array();
 	$headers[] = 'User-Agent: '.$ua;
@@ -267,88 +226,6 @@ function generateAccount($Red,$White,$Green,$Grey,$Blue){
 	$apikey = $load['Spotify']['apikey_spotify'];
 	$email_setting = $load['Setting']['email_auto'];
 	$pass = $load['Spotify']['password'];
-	
-	// ceckpoint:
-	// echo "\n ϟ Berapa akun : ";
-	// $u = trim(fgets(STDIN));
-	// echo "\n$White ϟ ($White) Process Claim.... ";
-	// for ($i = 0; $i < $u;$i++){
-	// $ua = randomUseragent();
-	// if($email_setting == true){
-	// 	$username = randomUser($ua);
-	// 	$domain = randDomain();
-	// 	$uname = str_replace(' ','',$username);
-	// 	$randStr = rand(01,999);
-	// 	$email = "$uname$randStr@$domain";
-	// } else {
-	// 	$username = randomUser($ua);
-	// 	echo "\n ϟ Email : ";
-	// 	$email = trim(fgets(STDIN));
-	// 	echo " ϟ Pass  : ";
-	// 	$pass = trim(fgets(STDIN));
-	// }
-
-	// $randMonth = rand(1, 12);
-	// $randDate = rand(1, 30);
-	// $bulan = $randMonth < 10 ? $randMonth = "0" . $randMonth : $randMonth = $randMonth;
-	// $tanggal = $randDate < 10 ? $randDate = "0" . $randDate : $randDate = $randDate;
-	// $tahun = rand(1980,2003);
-	// $ttl = "$tahun-$bulan-$tanggal";
-	// $iid = sessionId();
-	// $gender = rand(1,4);
-	// $register = signup($email,$pass,$ttl,$username,$iid,$ua,$gender,$apikey);
-	// if(preg_match('/login_token/i',$register)){
-	// 	$x = json_decode($register, true);
-	// 	$logintoken = $x['success']['login_token'];
-	// 	// echo "\n$White ϟ ($Green $email $White) Process Claim.... ";
-	// } else if(preg_match('/already_exists/i',$register)){
-	// 	echo "\n$Red ϟ Sudah ada akun untuk email ini.\n\n$White";
-	// 	goto ceckpoint;
-	// } else{
-	// 	var_dump("\n\n$register\n\n"); die;
-	// }
-
-
-	// ceckpoint:
-	// echo "\n ϟ Berapa akun : ";
-	// $u = trim(fgets(STDIN));
-	// echo "\n$White ϟ ($White) Process Claim.... ";
-	// for ($i = 0; $i < $u;$i++){
-	// $ua = randomUseragent();
-	// if($email_setting == true){
-	// 	$username = randomUser($ua);
-	// 	$domain = randDomain();
-	// 	$uname = str_replace(' ','',$username);
-	// 	$randStr = rand(01,999);
-	// 	$randChar = chr(rand(ord('a'), ord('z')));
-	// 	$email = "$uname$randStr$randChar@$domain";
-	// } else {
-	// 	$username = randomUser($ua);
-	// 	echo "\n ϟ Email : ";
-	// 	$email = trim(fgets(STDIN));
-	// 	echo " ϟ Pass  : ";
-	// 	$pass = trim(fgets(STDIN));
-	// }
-
-	// $randMonth = rand(1, 12);
-	// $randDate = rand(1, 30);
-	// $bulan = $randMonth < 10 ? $randMonth = "0" . $randMonth : $randMonth = $randMonth;
-	// $tanggal = $randDate < 10 ? $randDate = "0" . $randDate : $randDate = $randDate;
-	// $tahun = rand(1980,2003);
-	// $ttl = "$tahun-$bulan-$tanggal";
-	// $iid = sessionId();
-	// $gender = rand(1,4);
-	// $register = signup($email,$pass,$ttl,$username,$iid,$ua,$gender,$apikey);
-	// if(preg_match('/login_token/i',$register)){
-	// 	$x = json_decode($register, true);
-	// 	$logintoken = $x['success']['login_token'];
-	// 	// echo "\n$White ϟ ($Green $email $White) Process Claim.... ";
-	// } else if(preg_match('/already_exists/i',$register)){
-	// 	echo "\n$Red ϟ Sudah ada akun untuk email ini.$White";
-	// 	continue;
-	// } else{
-	// 	var_dump("\n\n$register\n\n"); die;
-	// }
 
 	echo "\n ϟ Berapa akun : ";
 	$u = trim(fgets(STDIN));
@@ -386,7 +263,6 @@ function generateAccount($Red,$White,$Green,$Grey,$Blue){
 
     if (empty($uname)) {
 		$gagal++;
-        // echo "\n$Red ϟ Gagal meng-generate email. Mengulangi proses....$White";
         continue;
 	} else if (preg_match('/login_token/i', $register)) {
         $x = json_decode($register, true);
@@ -412,7 +288,6 @@ function generateAccount($Red,$White,$Green,$Grey,$Blue){
 		preg_match('/sp_dc=([^;]+)/', $login, $matches);
 		$token = $matches[1];
 		if($token == null){
-			// echo "\n$Red ϟ Grabber token failure\n\n"; goto ceckpoint;
 			echo "\n$Red ϟ Grabber token failure\n\n";
 		}
 		$tokentobearer = getAccessToken($token);
@@ -435,13 +310,7 @@ function generateAccount($Red,$White,$Green,$Grey,$Blue){
 		echo "\n$White ϟ ($Green $email $White $genDevices ) SUCCESS ";
 		$saved = '{"Email":"'.$email.'","Password":"'.$pass.'"}';
 		
-		$kop = "
-		Model	   : $genDevices
-		Device Id   : $did
-		Session Id  : $did1\n\n";
-		
 		file_put_contents('res_spotify.json', "$saved\n", FILE_APPEND);
-		// file_put_contents('props_spotify.json', "$kop\n");
 	}
 	echo "\n\n$Red ϟ  Gagal : $White$gagal";
 	echo "\n\n$White ϟ Password : $White$pass\n";
