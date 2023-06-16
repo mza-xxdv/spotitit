@@ -10,6 +10,6 @@ Termux - Android (recommended version 0.117-Last)
 3. pkg install php
 4. termux-setup-storage
 5. git clone https://github.com/mza-xxdv/spotitit
-6. cd Spotitit
+6. cd spotitit
 7. php index.php
 
